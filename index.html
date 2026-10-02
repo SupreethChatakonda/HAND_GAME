@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Setup screen: name your opponent -->
+  <div id="setup" class="setup">
+    <h1>Rock, Paper, Scissors</h1>
+    <p class="setup-text">This machine demands a name before it agrees to play.<br>What will you call your opponent?</p>
+    <input id="name-input" type="text" maxlength="16" placeholder="e.g. CL4PTR4P">
+    <button id="start-btn">Start Game</button>
+  </div>
+
+  <!-- Game screen -->
+  <div id="game" class="hidden">
+    <h1>Rock, Paper, Scissors</h1>
+
+    <div class="top-bar">
+      <select id="mode" title="Game mode">
+        <option value="endless">Endless</option>
+        <option value="bestOf3">Best of 3</option>
+        <option value="twoPlayer">2 Players</option>
+      </select>
+      <select id="difficulty" title="Difficulty">
+        <option value="easy">Easy</option>
+        <option value="normal" selected>Normal</option>
+        <option value="hard">Hard</option>
+      </select>
+      <label class="toggle"><input type="checkbox" id="spock-mode"> 🦎 Lizard &amp; Spock</label>
+      <label class="toggle"><input type="checkbox" id="cheat-mode"> 😈 Cheat</label>
+      <button id="mute" title="Toggle sound">🔊</button>
+    </div>
+
+    <div id="flash"></div>
+
+    <div class="computer">
+      <div id="avatar" class="avatar">🤖</div>
+      <div id="speech" class="speech">Let's play!</div>
+    </div>
+
+    <div id="meter" class="meter hidden">
+      <div class="meter-label">ANALYZING YOUR WEAKNESS…</div>
+      <div class="meter-track"><div id="meter-bar"></div></div>
+    </div>
+
+    <p id="result">Make your move!</p>
+    <p id="result-emojis"></p>
+
+    <div id="buttons1" class="buttons">
+      <button id="rock">🪨 Rock <kbd>R</kbd></button>
+      <button id="paper">📄 Paper <kbd>P</kbd></button>
+      <button id="scissors">✂️ Scissors <kbd>S</kbd></button>
+    </div>
+    <div id="buttons2" class="buttons hidden">
+      <button id="lizard">🦎 Lizard <kbd>L</kbd></button>
+      <button id="spock">🖖 Spock <kbd>K</kbd></button>
+    </div>
+
+    <!-- Pass-and-play: hidden input so your opponent can't peek -->
+    <div id="pass-overlay" class="pass hidden">
+      <p id="pass-prompt">Player 1 — type your move and press Enter</p>
+      <input id="pass-input" type="password" autocomplete="off" placeholder="r / p / s">
+      <p class="pass-hint">👀 Your move stays hidden from your opponent</p>
+    </div>
+
+    <p id="score"></p>
+    <p id="round-counter">Round: 1</p>
+    <button id="reset" class="reset">🔄 Play Again</button>
+
+    <div class="panels">
+      <div class="panel">
+        <h3>Round History</h3>
+        <ol id="history"></ol>
+      </div>
+      <div class="panel">
+        <h3>Career vs <span id="career-name">CPU</span></h3>
+        <p id="career-stats"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
