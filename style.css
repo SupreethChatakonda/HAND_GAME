@@ -1,0 +1,387 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding-top: 40px;
+  background-color: #f4f6f9;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ============ Setup screen ============ */
+.setup {
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.setup-text {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.setup input {
+  font-size: 1.1rem;
+  padding: 10px 14px;
+  border: 2px solid #4a90d9;
+  border-radius: 8px;
+  width: 70%;
+  text-align: center;
+}
+
+.setup button {
+  display: block;
+  margin: 16px auto 0;
+  font-size: 1.1rem;
+  padding: 10px 32px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90d9;
+  color: white;
+}
+
+.setup button:hover {
+  background-color: #357ab8;
+}
+
+/* ============ Top bar ============ */
+.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 16px;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.top-bar select {
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  background: white;
+}
+
+.toggle {
+  cursor: pointer;
+  user-select: none;
+}
+
+#mute {
+  font-size: 1.1rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  background: white;
+}
+
+/* ============ Computer character ============ */
+.computer {
+  margin: 16px 0;
+}
+
+.avatar {
+  font-size: 4rem;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.avatar.thinking {
+  animation: bob 0.5s ease-in-out infinite;
+  filter: saturate(0.4);
+}
+
+.avatar.happy {
+  animation: jump 0.5s ease-out;
+}
+
+.avatar.sad {
+  animation: slump 0.6s ease-out forwards;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes jump {
+  0%   { transform: translateY(0) scale(1); }
+  40%  { transform: translateY(-24px) scale(1.15); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes slump {
+  to { transform: translateY(10px) rotate(-8deg); }
+}
+
+.speech {
+  display: inline-block;
+  position: relative;
+  max-width: 340px;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: white;
+  border: 2px solid #4a90d9;
+  border-radius: 14px;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.speech::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-bottom-color: #4a90d9;
+}
+
+/* ============ Probability meter ============ */
+.meter {
+  margin: 8px auto 0;
+  max-width: 320px;
+}
+
+.meter-label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #999;
+  margin-bottom: 6px;
+}
+
+.meter-track {
+  height: 10px;
+  background: #e0e4ea;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#meter-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #4a90d9, #e0533d);
+}
+
+/* ============ Choices ============ */
+.buttons button {
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  margin: 6px 8px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90d9;
+  color: white;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.buttons button:hover {
+  background-color: #357ab8;
+  transform: scale(1.05);
+}
+
+.buttons button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+}
+
+kbd {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin-left: 6px;
+}
+
+/* ============ Pass-and-play overlay ============ */
+.pass {
+  max-width: 380px;
+  margin: 12px auto;
+  padding: 20px;
+  background: white;
+  border: 2px dashed #4a90d9;
+  border-radius: 14px;
+}
+
+.pass input {
+  font-size: 1.2rem;
+  padding: 10px;
+  border: 2px solid #bbb;
+  border-radius: 8px;
+  text-align: center;
+  width: 60%;
+}
+
+.pass-hint {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0;
+}
+
+/* ============ Results ============ */
+#result {
+  font-size: 1.3rem;
+  margin-top: 20px;
+}
+
+#result-emojis {
+  font-size: 3rem;
+  min-height: 3.5rem;
+  margin: 12px 0;
+}
+
+#result-emojis .hand {
+  display: inline-block;
+  margin: 0 16px;
+  animation: pop-in 0.3s ease-out;
+}
+
+#result-emojis .hand.shake {
+  animation: shake 0.6s ease-in-out 2;
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25%      { transform: translateY(-16px) rotate(-12deg); }
+  75%      { transform: translateY(-4px) rotate(12deg); }
+}
+
+/* ============ Flash & screen shake ============ */
+#flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 50;
+}
+
+#flash.flash-red {
+  background: rgba(224, 60, 40, 0.28);
+  animation: flashfade 0.6s ease-out forwards;
+}
+
+#flash.flash-gold {
+  background: rgba(255, 200, 40, 0.35);
+  animation: flashfade 0.9s ease-out forwards;
+}
+
+@keyframes flashfade {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+body.shake {
+  animation: pageshake 0.4s ease-in-out;
+}
+
+@keyframes pageshake {
+  0%, 100% { transform: translate(0, 0); }
+  20%      { transform: translate(-6px, 2px) rotate(-0.5deg); }
+  40%      { transform: translate(6px, -2px) rotate(0.5deg); }
+  60%      { transform: translate(-4px, 1px); }
+  80%      { transform: translate(4px, -1px); }
+}
+
+/* ============ Confetti ============ */
+.confetti {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  z-index: 99;
+  pointer-events: none;
+  animation-name: confetti-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes confetti-fall {
+  to { transform: translateY(110vh) rotate(720deg); }
+}
+
+/* ============ Panels: history & career ============ */
+.panels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px auto 48px;
+  max-width: 760px;
+}
+
+.panel {
+  flex: 1 1 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-align: left;
+}
+
+.panel h3 {
+  margin-top: 0;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+#history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 180px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+#history li {
+  padding: 6px 4px;
+  border-bottom: 1px solid #f0f0f0;
+  animation: slide-in 0.3s ease-out;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(-16px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+.career-flavor {
+  color: #888;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* ============ Reset ============ */
+.reset {
+  margin-top: 8px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #e0533d;
+  color: white;
+}
+
+.reset:hover {
+  background-color: #c0402c;
+}
+
+@media (max-width: 700px) {
+  .panels { flex-direction: column; }
+}
